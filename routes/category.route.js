@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const categoryController = require('../controllers/category.controller');
-
+const authController = require('../controllers/auth.controller');
 const {
     createCategoryValidator,
     getCategoryValidator,
     updateCategoryValidator,
     deleteCategoryValidator
-
 } = require('../utils/validator/categoryValidator');
 
 
@@ -18,6 +17,8 @@ router.route('/')
     )
     .post( 
         // Validate the request body before creating a category
+        authController.protect,
+        authController.allowedTo('admin' , 'manager'),
         createCategoryValidator,
         categoryController.createCategory
     )

@@ -36,6 +36,14 @@ app.use('/api/v1/brands', brandRoutes);
 const productRoutes = require('./routes/product.route');
 app.use('/api/v1/products', productRoutes);
 
+// User routes
+const userRoutes = require('./routes/user.route');
+app.use('/api/v1/users', userRoutes);
+
+
+// auth routes
+const authRoutes = require('./routes/auth.route');
+app.use('/api/v1/auth', authRoutes);
 
 // // Handle undefine route
 // app.all('*', (req, res, next) => {
